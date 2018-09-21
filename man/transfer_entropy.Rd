@@ -5,15 +5,19 @@
 \title{Function to estimate Shannon and Renyi transfer entropy between two time
 series x and y.}
 \usage{
-transfer_entropy(x, y, lx = 1, ly = 1, q = 0.1, entropy = "Shannon",
-  shuffles = 100, type = "quantiles", quantiles = c(5, 95), bins = NULL,
-  limits = NULL, nboot = 300, burn = 50, quiet = NULL, seed = NULL,
-  cl = NULL)
+transfer_entropy(x, y, lx = 1, ly = 1, q = 0.1,
+  entropy = "Shannon", shuffles = 100, type = "quantiles",
+  quantiles = c(5, 95), bins = NULL, limits = NULL, nboot = 300,
+  burn = 50, quiet = NULL, seed = NULL)
 }
 \arguments{
-\item{x}{a vector of numeric values, ordered by time.}
+\item{x}{a vector of numeric values, ordered by time.
+Also allowed are \code{\link[xts]{xts}}, \code{\link[zoo]{zoo}},
+or \code{\link[stats]{ts}} objects.}
 
-\item{y}{a vector of numeric values, ordered by time.}
+\item{y}{a vector of numeric values, ordered by time.
+Also allowed are \code{\link[xts]{xts}}, \code{\link[zoo]{zoo}},
+or \code{\link[stats]{ts}} objects.}
 
 \item{lx}{Markov order of x, i.e. the number of lagged values affecting the
 current value of x. Default is \code{lx = 1}.}
@@ -58,12 +62,9 @@ the bootstrapped Markov chain. Default is \code{burn = 50}.}
 
 \item{seed}{a seed that seeds the PRNG (will internally just call set.seed),
 default is \code{seed = NULL}.}
-
-\item{cl}{deprecated, for parallel processing use
-\code{future::\link[future]{plan}}}
 }
 \value{
-an object of class TEResult, containing the transfer entropy
+an object of class transfer_entropy, containing the transfer entropy
         estimates in both directions, the effective transfer entropy
         estimates in both directions, standard errors and p-values based on
         bootstrap replications of the Markov chains under the null hypothesis
@@ -94,6 +95,8 @@ y <- y[-1]
 te_result <- transfer_entropy(x, y, nboot = 100)
 te_result
 
+summary(te_result)
+
 \donttest{
   # Parallel Processing using the future-package
   library(future)
@@ -117,5 +120,5 @@ te_result
 }
 }
 \seealso{
-\code{\link{coef}}, \code{\link{print.TEResult}}
+\code{\link{coef}}, \code{\link{print.transfer_entropy}}
 }
