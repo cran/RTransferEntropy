@@ -76,10 +76,21 @@ y <- y[-1]
 ## ----plot_data_1, echo=F, message=FALSE, warning=FALSE-------------------
 plot_series(x, y)
 
-## ----te_1----------------------------------------------------------------
+## ----te_1_lib, eval=F----------------------------------------------------
+#  library(future)
+#  # enable parallel processing for all future transfer_entropy calls
+#  plan(multiprocess)
+
+## ----te_1_lib_actual, echo=F---------------------------------------------
 library(future)
-# enable parallel processing for all future transfer_entropy calls
-plan(multiprocess)
+
+if (Sys.info()[["user"]] == "travis") {
+  plan(sequential)
+} else {
+  plan(multiprocess)
+}
+
+## ----te_1----------------------------------------------------------------
 set.seed(12345)
 shannon_te <- transfer_entropy(x, y)
 

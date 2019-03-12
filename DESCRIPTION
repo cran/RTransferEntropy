@@ -2,7 +2,7 @@ Package: RTransferEntropy
 Type: Package
 Title: Measuring Information Flow Between Time Series with Shannon and
         Renyi Transfer Entropy
-Version: 0.2.7
+Version: 0.2.8
 Description: Measuring information flow between time series with Shannon and Rényi transfer entropy. See also Dimpfl and Peter (2013) <doi:10.1515/snde-2012-0044> and Dimpfl and Peter (2014) <doi:10.1016/j.intfin.2014.03.004> for theory and applications to financial time series. Additional references can be found in the theory part of the vignette.
 Authors@R: c(
     person("Simon", "Behrendt", , "simon.behrendt@zu.de", role = c("aut", "cre")),
@@ -17,17 +17,17 @@ Encoding: UTF-8
 Depends: R (>= 3.1.2)
 Imports: future, future.apply, Rcpp
 LazyData: true
-RoxygenNote: 6.1.0
+RoxygenNote: 6.1.1
 LinkingTo: Rcpp
 Suggests: data.table, ggplot2, gridExtra, knitr, quantmod, rmarkdown,
         testthat, vars, xts, zoo
 VignetteBuilder: knitr
 NeedsCompilation: yes
-Packaged: 2018-09-21 08:30:26 UTC; david
+Packaged: 2019-03-12 15:42:49 UTC; david
 Author: Simon Behrendt [aut, cre],
   David Zimmermann [aut],
   Thomas Dimpfl [aut],
   Franziska Peter [aut]
 Maintainer: Simon Behrendt <simon.behrendt@zu.de>
 Repository: CRAN
-Date/Publication: 2018-09-21 16:00:03 UTC
+Date/Publication: 2019-03-12 22:56:06 UTC

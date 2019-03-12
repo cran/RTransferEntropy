@@ -1,4 +1,4 @@
-088694bbe8402a6aafc403ed11a6e2c1 *DESCRIPTION
+f2d5ab907a46ca45d9206d8979e61881 *DESCRIPTION
 9868a759a4cfc0ffd52d220cb304eac5 *NAMESPACE
 713e1a1016daba4e523186d9dca81699 *R/RcppExports.R
 7fb1fff48e6063a497a16a810a9144e6 *R/bootstrap_renyi.R
@@ -19,11 +19,11 @@ a9e4249d2dade75533e1e1bc612d6ddc *R/te_shannon.R
 640121d1e25195618d9f915e61b52dbf *R/transfer_entropy.R
 0d740aa9f1c9688200a46ac477f8ba9d *R/zzz.R
 bea4cc6e2fe7f6e474e86d0f4057e7d2 *README.md
-f1e85807c91ce359ecbeb3c8c59ead44 *build/vignette.rds
+9d200eefc767776d1eb2aae82063e733 *build/vignette.rds
 2ab9648c92dd083947e3b1fcc653d73a *data/stocks.rda
-d63d885d0676abe21121d90f848643a0 *inst/doc/transfer-entropy.R
-4744774a9a664f4545e455664888152f *inst/doc/transfer-entropy.Rmd
-5f12eac5eb220e3d0c27a408ddd60366 *inst/doc/transfer-entropy.html
+68c5d0c1fc404dcb31935c9cc6dffec5 *inst/doc/transfer-entropy.R
+14cb6cca9b3882e8312be8d90c3f81cd *inst/doc/transfer-entropy.Rmd
+ae2d8f19e3ea2aebc4d08618480229ae *inst/doc/transfer-entropy.html
 5f386a8d7905403d9a42af736f29e432 *man/calc_ete.Rd
 2153c8109c6b4d58ef76ed86b135120f *man/calc_te.Rd
 9ec12f41a5f403c202d872db292e9eba *man/coef.transfer_entropy.Rd
@@ -40,9 +40,9 @@ b3857bac96223527c6271c21b4a921fd *src/RcppExports.cpp
 78a5bad1fe09406ec9f53ad16fb3471f *src/calculate_transition_probabilities.cpp
 17e4e97ef860b5cb4ebf66883bb9b24c *src/cluster_gen.cpp
 2adfa6834357b9c9800eb2bd0b70a72c *src/freq_table.cpp
-e581a0a41f0be222113c11064326db4e *tests/testthat.R
+c583e0274f5def37f0f29e02f802564f *tests/testthat.R
 d978f02747ab815f58560ed52599c91a *tests/testthat/test.calculate_transition_probabilities.R
 9fe1d31878e81897e73ef187c97d52a5 *tests/testthat/test.cluster_gen.R
 121b18ed3fffb997810d5ca91ce8d25e *tests/testthat/test.transfer_entropy.R
 4aa9b4253ecbb757abe1e5edb4bf39d2 *vignettes/bdpz2018.bib
-4744774a9a664f4545e455664888152f *vignettes/transfer-entropy.Rmd
+14cb6cca9b3882e8312be8d90c3f81cd *vignettes/transfer-entropy.Rmd
