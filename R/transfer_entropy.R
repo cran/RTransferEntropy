@@ -38,6 +38,8 @@
 #' @param quiet if FALSE (default), the function gives feedback.
 #' @param seed a seed that seeds the PRNG (will internally just call set.seed),
 #'             default is \code{seed = NULL}.
+#' @param na.rm if missing values should be removed (will remove the values at
+#'             the same point in the other series as well). Default is \code{TRUE}.
 #'
 #' @return an object of class transfer_entropy, containing the transfer entropy
 #'         estimates in both directions, the effective transfer entropy
@@ -106,7 +108,8 @@ transfer_entropy <- function(x,
                              nboot = 300,
                              burn = 50,
                              quiet = NULL,
-                             seed = NULL) {
+                             seed = NULL,
+                             na.rm = TRUE) {
   if (!is.null(seed)) set.seed(seed)
 
   t0 <- Sys.time()
@@ -204,10 +207,17 @@ transfer_entropy <- function(x,
     ))
   }
 
+  x <- check_dimension(x)
+  y <- check_dimension(y)
+
   # Remove missing values
   mis_values <- is.na(x) | is.na(y)
-  x <- x[!mis_values]
-  y <- y[!mis_values]
+  if (na.rm == TRUE) {
+    x <- x[!mis_values]
+    y <- y[!mis_values]
+  } else {
+    if (any(mis_values)) return(NA)
+  }
 
   if (length(x) == 0) stop("x and y must have non-missing values.")
 

@@ -14,6 +14,18 @@ fupper <- function(x) paste0(toupper(substr(x, 1, 1)), substr(x, 2, nchar(x)))
 # returns an s if n > 1 (i.e., sprintf("we have n = %s sample%s", n, mult_s(n)))
 mult_s <- function(n) ifelse(n > 1, "s", "")
 
+# checks the dimensions of an input and takes the first column if possible
+check_dimension <- function(x) {
+  if (is.matrix(x) || is.data.frame(x)) {
+    if (ncol(x) == 1) {
+      x <- x[, 1]
+    } else {
+      stop("x and y must be a vector.")
+    }
+  }
+  return(x)
+}
+
 # wrapper for calc_te and cal_ete that calculates the values
 calc_te_ete <- function(restype = "te",
                         x, y, lx = 1, ly = 1, q = 0.1,
@@ -24,7 +36,8 @@ calc_te_ete <- function(restype = "te",
                         bins = NULL,
                         limits = NULL,
                         burn = 50,
-                        seed = NULL) {
+                        seed = NULL,
+                        na.rm = TRUE) {
   if (!is.null(seed)) set.seed(seed)
 
   restype <- tolower(restype)
@@ -72,6 +85,22 @@ calc_te_ete <- function(restype = "te",
       "Markov order/number of lags should be identical for both time series to",
       "facilitate interpretation of results. Consider setting lx = ly."
     ))
+  }
+
+  # check input of data
+
+  # Check for unequal length of time series
+  if (length(x) != length(y)) stop("x and y must be of same length.")
+  x <- check_dimension(x)
+  y <- check_dimension(y)
+
+  # Remove missing values
+  mis_values <- is.na(x) | is.na(y)
+  if (na.rm == TRUE) {
+    x <- x[!mis_values]
+    y <- y[!mis_values]
+  } else {
+    if (any(mis_values)) return(NA)
   }
 
   # Check that transfer entropy measure is specified correctly
