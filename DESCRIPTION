@@ -2,11 +2,11 @@ Package: RTransferEntropy
 Type: Package
 Title: Measuring Information Flow Between Time Series with Shannon and
         Renyi Transfer Entropy
-Version: 0.2.12
+Version: 0.2.13
 Description: Measuring information flow between time series with Shannon and Rényi transfer entropy. See also Dimpfl and Peter (2013) <doi:10.1515/snde-2012-0044> and Dimpfl and Peter (2014) <doi:10.1016/j.intfin.2014.03.004> for theory and applications to financial time series. Additional references can be found in the theory part of the vignette.
 Authors@R: c(
-    person("Simon", "Behrendt", , "simon.behrendt@zu.de", role = c("aut", "cre")),
-    person("David", "Zimmermann", role = c("aut")),
+    person("David", "Zimmermann", email = "david_j_zimmermann@hotmail.com", role = c("aut", "cre")),
+    person("Simon", "Behrendt", role = c("aut")),
     person("Thomas", "Dimpfl", role = c("aut")),
     person("Franziska", "Peter", role = c("aut"))
     )
@@ -17,17 +17,17 @@ Encoding: UTF-8
 Depends: R (>= 3.1.2)
 Imports: future, future.apply, Rcpp
 LazyData: true
-RoxygenNote: 6.1.1
+RoxygenNote: 7.1.1
 LinkingTo: Rcpp
 Suggests: data.table, ggplot2, gridExtra, knitr, quantmod, rmarkdown,
         testthat, vars, xts, zoo
 VignetteBuilder: knitr
 NeedsCompilation: yes
-Packaged: 2019-08-19 12:47:48 UTC; david
-Author: Simon Behrendt [aut, cre],
-  David Zimmermann [aut],
+Packaged: 2020-12-16 23:03:42 UTC; david
+Author: David Zimmermann [aut, cre],
+  Simon Behrendt [aut],
   Thomas Dimpfl [aut],
   Franziska Peter [aut]
-Maintainer: Simon Behrendt <simon.behrendt@zu.de>
+Maintainer: David Zimmermann <david_j_zimmermann@hotmail.com>
 Repository: CRAN
-Date/Publication: 2019-08-19 13:50:02 UTC
+Date/Publication: 2020-12-17 10:30:07 UTC

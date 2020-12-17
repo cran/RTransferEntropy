@@ -1,4 +1,4 @@
-## ----setup, include = FALSE----------------------------------------------
+## ----setup, include = FALSE---------------------------------------------------
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
@@ -39,10 +39,10 @@ plot_series <- function(x, y) {
   return(invisible(p))
 }
 
-## ----load_packages, echo=F-----------------------------------------------
+## ----load_packages, echo=F----------------------------------------------------
 library(RTransferEntropy)
 
-## ---- eval=F-------------------------------------------------------------
+## ---- eval=F------------------------------------------------------------------
 #  # Install from CRAN
 #  install.packages('RTransferEntropy')
 #  # Install development version from GitHub
@@ -51,7 +51,7 @@ library(RTransferEntropy)
 #  # load the package
 #  library(RTransferEntropy)
 
-## ---- eval=F-------------------------------------------------------------
+## ---- eval=F------------------------------------------------------------------
 #  transfer_entropy(x, y,
 #                   lx = 1, ly = 1, q = 0.1,
 #                   entropy = c('Shannon', 'Renyi'), shuffles = 100,
@@ -59,7 +59,7 @@ library(RTransferEntropy)
 #                   quantiles = c(5, 95), bins = NULL, limits = NULL,
 #                   nboot = 300, burn = 50, quiet = FALSE, seed = NULL)
 
-## ----gen_data1-----------------------------------------------------------
+## ----gen_data1----------------------------------------------------------------
 set.seed(12345)
 n <- 2500
 x <- rep(0, n + 1)
@@ -73,15 +73,15 @@ for (i in 2:(n + 1)) {
 x <- x[-1]
 y <- y[-1]
 
-## ----plot_data_1, echo=F, message=FALSE, warning=FALSE-------------------
+## ----plot_data_1, echo=F, message=FALSE, warning=FALSE------------------------
 plot_series(x, y)
 
-## ----te_1_lib, eval=F----------------------------------------------------
+## ----te_1_lib, eval=F---------------------------------------------------------
 #  library(future)
 #  # enable parallel processing for all future transfer_entropy calls
 #  plan(multiprocess)
 
-## ----te_1_lib_actual, echo=F---------------------------------------------
+## ----te_1_lib_actual, echo=F--------------------------------------------------
 library(future)
 
 if (Sys.info()[["user"]] == "travis") {
@@ -90,14 +90,14 @@ if (Sys.info()[["user"]] == "travis") {
   plan(multiprocess)
 }
 
-## ----te_1----------------------------------------------------------------
+## ----te_1---------------------------------------------------------------------
 set.seed(12345)
 shannon_te <- transfer_entropy(x, y)
 
-## ----show_result_1, eval=T-----------------------------------------------
+## ----show_result_1, eval=T----------------------------------------------------
 shannon_te
 
-## ----smaller_functions---------------------------------------------------
+## ----smaller_functions--------------------------------------------------------
 # X->Y
 calc_te(x, y)
 calc_ete(x, y)
@@ -106,7 +106,7 @@ calc_ete(x, y)
 calc_te(y, x)
 calc_ete(y, x)
 
-## ----gen_data_2, eval=T--------------------------------------------------
+## ----gen_data_2, eval=T-------------------------------------------------------
 set.seed(12345)
 n <- 2500
 x <- rep(0, n + 200)
@@ -123,22 +123,22 @@ for (i in 2:(n + 200)) {
 x <- x[-(1:200)]
 y <- y[-(1:200)]
 
-## ----plot_data_2, echo=F, message=FALSE, warning=FALSE-------------------
+## ----plot_data_2, echo=F, message=FALSE, warning=FALSE------------------------
 plot_series(x, y)
 
-## ----te_2, eval=T--------------------------------------------------------
+## ----te_2, eval=T-------------------------------------------------------------
 shannon_te2 <- transfer_entropy(x, y)
 
 shannon_te2
 
-## ----var_comparison, message=FALSE, warning=FALSE------------------------
+## ----var_comparison, message=FALSE, warning=FALSE-----------------------------
 library(vars)
 varfit <- VAR(cbind(x, y), p = 1, type = "const")
 svf <- summary(varfit)
 
 svf$varresult$y
 
-## ----te_2a, eval=T-------------------------------------------------------
+## ----te_2a, eval=T------------------------------------------------------------
 df <- data.frame(q1 = 5:25, q2 = 95:75)
 
 df$ete <- apply(
@@ -153,7 +153,7 @@ ggplot(df, aes(x = quantiles, y = ete)) +
   theme(axis.text.x = element_text(angle = 90)) +
   labs(x = "Quantiles", y = "ETE (X->Y)")
 
-## ----gen_data_3, eval=T--------------------------------------------------
+## ----gen_data_3, eval=T-------------------------------------------------------
 set.seed(12345)
 
 x <- rep(0, n + 200)
@@ -174,16 +174,16 @@ for (i in 2:(n + 200)) {
 x <- x[-(1:200)]
 y <- y[-(1:200)]
 
-## ----plot_data_3, echo=F, message=FALSE, warning=FALSE-------------------
+## ----plot_data_3, echo=F, message=FALSE, warning=FALSE------------------------
 plot_series(x, y)
 
-## ----te_renyi_3----------------------------------------------------------
+## ----te_renyi_3---------------------------------------------------------------
 set.seed(12345)
 renyi_te <- transfer_entropy(x, y, entropy = "Renyi", q = 0.3)
 
 renyi_te
 
-## ----q_test--------------------------------------------------------------
+## ----q_test-------------------------------------------------------------------
 qs <- c(seq(0.1, 0.9, 0.1), 0.99)
 
 te <- sapply(qs, function(q) calc_te(x, y, entropy = "renyi", q = q))
@@ -192,7 +192,7 @@ names(te) <- sprintf("q = %.2f", qs)
 te_shannon <- calc_te(x, y)
 te_shannon
 
-## ----plot_q_test, message=FALSE, warning=FALSE---------------------------
+## ----plot_q_test, message=FALSE, warning=FALSE--------------------------------
 round(te, 4)
 
 text_df <- data.frame(x = 0.25, 
@@ -209,7 +209,7 @@ ggplot(data.frame(x = qs, y = te), aes(x = x, y = y)) +
             aes(label = lab), color = "red", nudge_y = 0.01)
 
 
-## ----load_data, message=FALSE, warning=FALSE-----------------------------
+## ----load_data, message=FALSE, warning=FALSE----------------------------------
 library(data.table) # for data manipulation
 
 res <- lapply(split(stocks, stocks$ticker), function(d) {
@@ -243,7 +243,7 @@ ggplot(df, aes(x = ticker, y = ete)) +
                 width = 0.25, col = "blue") +
   geom_point()
 
-## ----density_plot_1------------------------------------------------------
+## ----density_plot_1-----------------------------------------------------------
 # calculate the same ete with different quantiles
 df2 <- stocks[, .(ete_xy = calc_ete(ret, sp500, quantiles = c(10, 90)),
                   ete_yx = calc_ete(sp500, ret, quantiles = c(10, 90))), 
@@ -275,7 +275,7 @@ ggplot(df_long2, aes(x = quantiles, y = value, color = ticker, group = ticker)) 
     color = "Ticker"
   )
 
-## ----renyi_te------------------------------------------------------------
+## ----renyi_te-----------------------------------------------------------------
 qs <- c(seq(0.1, 0.9, 0.1), 0.99)
 d <- stocks[ticker == "AXP"]
 
@@ -314,7 +314,7 @@ ggplot(qdt, aes(x = q, y = ete)) +
        title = "Renyi's Transfer Entropy for different Values of q",
        subtitle = "For American Express (AXP, X) and the S&P 500 Index (Y)")
 
-## ----future_details, eval = F--------------------------------------------
+## ----future_details, eval = F-------------------------------------------------
 #  library(future)
 #  
 #  # enable parallelism
@@ -325,7 +325,7 @@ ggplot(qdt, aes(x = q, y = ete)) +
 #  plan(sequential)
 #  te <- transfer_entropy(x, y, nboot = 100)
 
-## ----set_quiet-----------------------------------------------------------
+## ----set_quiet----------------------------------------------------------------
 set_quiet(TRUE)
 te <- transfer_entropy(x, y, nboot = 0)
 

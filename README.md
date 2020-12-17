@@ -1,11 +1,13 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-[![Travis build
-status](https://travis-ci.org/BZPaper/RTransferEntropy.svg?branch=master)](https://travis-ci.org/BZPaper/RTransferEntropy)
+<!-- badges: start -->
+
+[![R-CMD-check](https://github.com/BZPaper/RTransferEntropy/workflows/R-CMD-check/badge.svg)](https://github.com/BZPaper/RTransferEntropy/actions)
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/RTransferEntropy)](https://cran.r-project.org/package=RTransferEntropy)
 [![](https://cranlogs.r-pkg.org/badges/RTransferEntropy)](https://cran.r-project.org/package=RTransferEntropy)
 [![](https://img.shields.io/badge/doi-10.1016/j.softx.2019.100265-yellow.svg)](https://doi.org/10.1016/j.softx.2019.100265)
+<!-- badges: end -->
 
 # RTransferEntropy
 
@@ -55,6 +57,9 @@ library(RTransferEntropy)
 library(future)
 # enable parallel processing
 plan(multiprocess)
+#> Warning: Strategy 'multiprocess' is deprecated in future (>= 1.20.0). Instead,
+#> explicitly specify either 'multisession' or 'multicore'. In the current R
+#> session, 'multiprocess' equals 'multisession'.
 
 set.seed(20180108)
 n <- 2000
@@ -120,7 +125,55 @@ shannon_te <- transfer_entropy(x = x, y = y)
 #>   [calculate] X->Y transfer entropy
 #>   [calculate] Y->X transfer entropy
 #>   [bootstrap] 300 times
-#> Done - Total time 3.14 seconds
+#> Warning: UNRELIABLE VALUE: Future ('future_sapply-1') unexpectedly generated
+#> random numbers without specifying argument 'seed'. There is a risk that those
+#> random numbers are not statistically sound and the overall results might be
+#> invalid. To fix this, specify 'seed=TRUE'. This ensures that proper, parallel-
+#> safe random numbers are produced via the L'Ecuyer-CMRG method. To disable this
+#> check, use 'seed=NULL', or set option 'future.rng.onMisuse' to "ignore".
+#> Warning: UNRELIABLE VALUE: Future ('future_sapply-2') unexpectedly generated
+#> random numbers without specifying argument 'seed'. There is a risk that those
+#> random numbers are not statistically sound and the overall results might be
+#> invalid. To fix this, specify 'seed=TRUE'. This ensures that proper, parallel-
+#> safe random numbers are produced via the L'Ecuyer-CMRG method. To disable this
+#> check, use 'seed=NULL', or set option 'future.rng.onMisuse' to "ignore".
+#> Warning: UNRELIABLE VALUE: Future ('future_sapply-3') unexpectedly generated
+#> random numbers without specifying argument 'seed'. There is a risk that those
+#> random numbers are not statistically sound and the overall results might be
+#> invalid. To fix this, specify 'seed=TRUE'. This ensures that proper, parallel-
+#> safe random numbers are produced via the L'Ecuyer-CMRG method. To disable this
+#> check, use 'seed=NULL', or set option 'future.rng.onMisuse' to "ignore".
+#> Warning: UNRELIABLE VALUE: Future ('future_sapply-4') unexpectedly generated
+#> random numbers without specifying argument 'seed'. There is a risk that those
+#> random numbers are not statistically sound and the overall results might be
+#> invalid. To fix this, specify 'seed=TRUE'. This ensures that proper, parallel-
+#> safe random numbers are produced via the L'Ecuyer-CMRG method. To disable this
+#> check, use 'seed=NULL', or set option 'future.rng.onMisuse' to "ignore".
+#> Warning: UNRELIABLE VALUE: Future ('future_sapply-5') unexpectedly generated
+#> random numbers without specifying argument 'seed'. There is a risk that those
+#> random numbers are not statistically sound and the overall results might be
+#> invalid. To fix this, specify 'seed=TRUE'. This ensures that proper, parallel-
+#> safe random numbers are produced via the L'Ecuyer-CMRG method. To disable this
+#> check, use 'seed=NULL', or set option 'future.rng.onMisuse' to "ignore".
+#> Warning: UNRELIABLE VALUE: Future ('future_sapply-6') unexpectedly generated
+#> random numbers without specifying argument 'seed'. There is a risk that those
+#> random numbers are not statistically sound and the overall results might be
+#> invalid. To fix this, specify 'seed=TRUE'. This ensures that proper, parallel-
+#> safe random numbers are produced via the L'Ecuyer-CMRG method. To disable this
+#> check, use 'seed=NULL', or set option 'future.rng.onMisuse' to "ignore".
+#> Warning: UNRELIABLE VALUE: Future ('future_sapply-7') unexpectedly generated
+#> random numbers without specifying argument 'seed'. There is a risk that those
+#> random numbers are not statistically sound and the overall results might be
+#> invalid. To fix this, specify 'seed=TRUE'. This ensures that proper, parallel-
+#> safe random numbers are produced via the L'Ecuyer-CMRG method. To disable this
+#> check, use 'seed=NULL', or set option 'future.rng.onMisuse' to "ignore".
+#> Warning: UNRELIABLE VALUE: Future ('future_sapply-8') unexpectedly generated
+#> random numbers without specifying argument 'seed'. There is a risk that those
+#> random numbers are not statistically sound and the overall results might be
+#> invalid. To fix this, specify 'seed=TRUE'. This ensures that proper, parallel-
+#> safe random numbers are produced via the L'Ecuyer-CMRG method. To disable this
+#> check, use 'seed=NULL', or set option 'future.rng.onMisuse' to "ignore".
+#> Done - Total time 5.34 seconds
 
 shannon_te
 #> Shannon Transfer Entropy Results:
@@ -185,7 +238,55 @@ renyi_te <- transfer_entropy(x = x, y = y, entropy = "renyi", q = 0.5)
 #>   [calculate] X->Y transfer entropy
 #>   [calculate] Y->X transfer entropy
 #>   [bootstrap] 300 times
-#> Done - Total time 2.79 seconds
+#> Warning: UNRELIABLE VALUE: Future ('future_sapply-1') unexpectedly generated
+#> random numbers without specifying argument 'seed'. There is a risk that those
+#> random numbers are not statistically sound and the overall results might be
+#> invalid. To fix this, specify 'seed=TRUE'. This ensures that proper, parallel-
+#> safe random numbers are produced via the L'Ecuyer-CMRG method. To disable this
+#> check, use 'seed=NULL', or set option 'future.rng.onMisuse' to "ignore".
+#> Warning: UNRELIABLE VALUE: Future ('future_sapply-2') unexpectedly generated
+#> random numbers without specifying argument 'seed'. There is a risk that those
+#> random numbers are not statistically sound and the overall results might be
+#> invalid. To fix this, specify 'seed=TRUE'. This ensures that proper, parallel-
+#> safe random numbers are produced via the L'Ecuyer-CMRG method. To disable this
+#> check, use 'seed=NULL', or set option 'future.rng.onMisuse' to "ignore".
+#> Warning: UNRELIABLE VALUE: Future ('future_sapply-3') unexpectedly generated
+#> random numbers without specifying argument 'seed'. There is a risk that those
+#> random numbers are not statistically sound and the overall results might be
+#> invalid. To fix this, specify 'seed=TRUE'. This ensures that proper, parallel-
+#> safe random numbers are produced via the L'Ecuyer-CMRG method. To disable this
+#> check, use 'seed=NULL', or set option 'future.rng.onMisuse' to "ignore".
+#> Warning: UNRELIABLE VALUE: Future ('future_sapply-4') unexpectedly generated
+#> random numbers without specifying argument 'seed'. There is a risk that those
+#> random numbers are not statistically sound and the overall results might be
+#> invalid. To fix this, specify 'seed=TRUE'. This ensures that proper, parallel-
+#> safe random numbers are produced via the L'Ecuyer-CMRG method. To disable this
+#> check, use 'seed=NULL', or set option 'future.rng.onMisuse' to "ignore".
+#> Warning: UNRELIABLE VALUE: Future ('future_sapply-5') unexpectedly generated
+#> random numbers without specifying argument 'seed'. There is a risk that those
+#> random numbers are not statistically sound and the overall results might be
+#> invalid. To fix this, specify 'seed=TRUE'. This ensures that proper, parallel-
+#> safe random numbers are produced via the L'Ecuyer-CMRG method. To disable this
+#> check, use 'seed=NULL', or set option 'future.rng.onMisuse' to "ignore".
+#> Warning: UNRELIABLE VALUE: Future ('future_sapply-6') unexpectedly generated
+#> random numbers without specifying argument 'seed'. There is a risk that those
+#> random numbers are not statistically sound and the overall results might be
+#> invalid. To fix this, specify 'seed=TRUE'. This ensures that proper, parallel-
+#> safe random numbers are produced via the L'Ecuyer-CMRG method. To disable this
+#> check, use 'seed=NULL', or set option 'future.rng.onMisuse' to "ignore".
+#> Warning: UNRELIABLE VALUE: Future ('future_sapply-7') unexpectedly generated
+#> random numbers without specifying argument 'seed'. There is a risk that those
+#> random numbers are not statistically sound and the overall results might be
+#> invalid. To fix this, specify 'seed=TRUE'. This ensures that proper, parallel-
+#> safe random numbers are produced via the L'Ecuyer-CMRG method. To disable this
+#> check, use 'seed=NULL', or set option 'future.rng.onMisuse' to "ignore".
+#> Warning: UNRELIABLE VALUE: Future ('future_sapply-8') unexpectedly generated
+#> random numbers without specifying argument 'seed'. There is a risk that those
+#> random numbers are not statistically sound and the overall results might be
+#> invalid. To fix this, specify 'seed=TRUE'. This ensures that proper, parallel-
+#> safe random numbers are produced via the L'Ecuyer-CMRG method. To disable this
+#> check, use 'seed=NULL', or set option 'future.rng.onMisuse' to "ignore".
+#> Done - Total time 3.93 seconds
 
 renyi_te
 #> Renyi Transfer Entropy Results:
@@ -271,7 +372,7 @@ te <- transfer_entropy(x, y, nboot = 0)
 #>   x and y have length 2000 (0 NAs removed)
 #>   [calculate] X->Y transfer entropy
 #>   [calculate] Y->X transfer entropy
-#> Done - Total time 0.09 seconds
+#> Done - Total time 0.19 seconds
 ```
 
 # Parallel Programming
@@ -288,7 +389,7 @@ te <- transfer_entropy(x, y, nboot = 100)
 #>   [calculate] X->Y transfer entropy
 #>   [calculate] Y->X transfer entropy
 #>   [bootstrap] 100 times
-#> Done - Total time 1.14 seconds
+#> Done - Total time 2.52 seconds
 
 # revert to sequential mode
 plan(sequential)
@@ -298,5 +399,5 @@ te <- transfer_entropy(x, y, nboot = 100)
 #>   [calculate] X->Y transfer entropy
 #>   [calculate] Y->X transfer entropy
 #>   [bootstrap] 100 times
-#> Done - Total time 3.99 seconds
+#> Done - Total time 5.03 seconds
 ```
