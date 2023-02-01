@@ -70,7 +70,7 @@ test_that("transfer_entropy shannon is correctly specified", {
 
   # check values
   exp_coefs <- matrix(
-    c(0.112028, 0.007643, 0.104721, 0.002144, 0.004071, 0.002659, 0, 0.3),
+    c(0.112028, 0.007643, 0.104721, 0.002144, 0.002659, 0.004071, 0, 0.3),
     nrow = 2, ncol = 4,
     dimnames = list(c("X->Y", "Y->X"), c("te", "ete", "se", "p-value"))
   )
@@ -147,7 +147,7 @@ test_that("transfer_entropy renyi is correctly specified", {
 
   # check values
   exp_coefs <- matrix(
-    c(0.121448, 0.01247, 0.045051, -0.036961, 0.032827, 0.03854, 0, 1),
+    c(0.121448, 0.01247, 0.045051, -0.036961, 0.03854, 0.032827, 0.2, 0.9),
     nrow = 2, ncol = 4,
     dimnames = list(c("X->Y", "Y->X"), c("te", "ete", "se", "p-value"))
   )
@@ -197,4 +197,26 @@ test_that("Check that transfer_entropy takes zoos and xts", {
     te_xts <- transfer_entropy(x_xts, y_xts, seed = 123, nboot = 10, quiet = T)
   })
   expect_equal(te_raw, te_xts)
+})
+
+
+test_that("Make sure earlier errors are not replicated", {
+  # see also https://github.com/BZPaper/RTransferEntropy/issues/58
+  x <- c(79652133, 88786612, 95234422, 99336996, 100764257, 105189366, 121472911,
+         119542332, 119862125, 120657508, 124405340, 125345113, 132920670, 137487222)
+
+  y <- c(211363, 217291, 226623, 230039, 239212, 247339, 255805, 264450, 282990,
+         304316, 314135, 313509, 331670, 348884)
+
+  # set.seed(123)
+  # markov_boot_step(c(1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3), lx = 1, burn = 50)
+
+  # RTransferEntropy:::te_shannon(x, lx = 1, y = y, ly = 1,
+  #                              100, type = "quantiles", quantiles = c(5, 95),
+  #                              bins = NULL,
+  #                              limits = NULL, nboot = 100, burn = 50, quiet = TRUE)
+
+  te_result <- transfer_entropy(x, y, nboot = 100, quiet = TRUE)
+  # minimal test is that this doesnt throw an error!
+  expect_equal(1, 1) # no note about empty test
 })

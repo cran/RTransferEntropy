@@ -29,6 +29,7 @@ List calculate_transition_probabilities(IntegerVector x, int lx = 1) {
   }
 
 
+
   // add missing elements, i.e., if there is no 2 in the series,
   // replace the element with an empty map
   for (int i = counts.begin()->first; i <= counts.rbegin()->first; ++i) {
@@ -37,6 +38,7 @@ List calculate_transition_probabilities(IntegerVector x, int lx = 1) {
       counts[i] = std::map<std::vector<int>, int>();
     }
   }
+
 
 
   // flatten map map to a vector of vectors
@@ -63,7 +65,12 @@ List calculate_transition_probabilities(IntegerVector x, int lx = 1) {
     for (auto val_ptr = id_ptr->second.begin();
          val_ptr != id_ptr->second.end();
          ++val_ptr) {
-      tmp_vec.push_back((double) val_ptr->second / n);
+
+      if (n == 0) {
+        tmp_vec.push_back(0.0);
+      } else {
+        tmp_vec.push_back((double) val_ptr->second / n);
+      }
 
       std::stringstream name_val;
       for (auto it = val_ptr->first.begin();

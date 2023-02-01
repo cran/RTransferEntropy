@@ -79,7 +79,8 @@ plot_series(x, y)
 ## ----te_1_lib, eval=F---------------------------------------------------------
 #  library(future)
 #  # enable parallel processing for all future transfer_entropy calls
-#  plan(multiprocess)
+#  # use multicore on unix machines for better performance
+#  plan(multisession)
 
 ## ----te_1_lib_actual, echo=F--------------------------------------------------
 library(future)
@@ -87,7 +88,7 @@ library(future)
 if (Sys.info()[["user"]] == "travis") {
   plan(sequential)
 } else {
-  plan(multiprocess)
+  plan(multisession)
 }
 
 ## ----te_1---------------------------------------------------------------------
@@ -318,7 +319,7 @@ ggplot(qdt, aes(x = q, y = ete)) +
 #  library(future)
 #  
 #  # enable parallelism
-#  plan(multiprocess)
+#  plan(multisession)
 #  te <- transfer_entropy(x, y, nboot = 100)
 #  
 #  # execute sequential again
@@ -331,4 +332,7 @@ te <- transfer_entropy(x, y, nboot = 0)
 
 set_quiet(FALSE)
 te <- transfer_entropy(x, y, nboot = 0)
+
+# close multisession, see also ?plan
+plan(sequential)
 

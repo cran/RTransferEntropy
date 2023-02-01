@@ -93,6 +93,9 @@
 #'
 #'   set_quiet(FALSE)
 #'   a <- transfer_entropy(x, y, nboot = 0)
+#'
+#'   # close multisession, see also ?plan
+#'   plan(sequential)
 #' }
 transfer_entropy <- function(x,
                              y,
@@ -271,12 +274,12 @@ transfer_entropy <- function(x,
 
   # Inference (standard errors, p-values)
   if (nboot > 1) {
-    seteyx <- sd(te$boot[1, ])
-    setexy <- sd(te$boot[2, ])
+    seteyx <- sd(te$boot[2, ])
+    setexy <- sd(te$boot[1, ])
 
     pval <- function(x, est) length(x[x > est]) / length(x)
-    psteyx <- pval(te$boot[1, ], te$teyx)
-    pstexy <- pval(te$boot[2, ], te$texy)
+    psteyx <- pval(te$boot[2, ], te$teyx)
+    pstexy <- pval(te$boot[1, ], te$texy)
   } else {
     seteyx <- NA
     setexy <- NA
